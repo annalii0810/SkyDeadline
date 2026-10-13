@@ -9,7 +9,7 @@ SkyDeadline is a research project investigating intrusion detection and response
 | Contributor | Responsibility |
 |---|---|
 | Dylan Fayad ([@dylanfayad-pixel](https://github.com/dylanfayad-pixel)) | Student A — Systems, Simulation & Telemetry |
-| Student B | Detection System & Host-Side Development |
+| Anna Li | Detection System & Host-Side Development |
 
 ## Phase I.0 — Baseline Validation
 
