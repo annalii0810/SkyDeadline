@@ -99,15 +99,58 @@ Raw telemetry recordings and earlier experimental attempts are preserved in the 
 
 ## Current Research Status
 
+## Phase I.0 — A+B Integration (M1)
+
+**Status: Completed — Host-Side Integration Validated**
+
+Student A and Student B successfully established a working SITL-to-detector telemetry pipeline over UDP on a single Kali Linux machine.
+
+### Integration Architecture
+
+ArduCopter SITL → MAVProxy → UDP (127.0.0.1:14550) → MAVLink Receiver → Telemetry Adapter → Detector Stub → Decision
+
+### Validation Results
+
+| Test | Result |
+|---|---|
+| SITL to detector telemetry over UDP | PASS |
+| Live telemetry-to-detector processing | 80 decisions |
+| Common monotonic clock | Validated for local timing |
+| Injected delay | 200 ms |
+| Average measured delay | 200.17 ms |
+| Average timing error | +0.17 ms |
+| Known-delay validation | PASS (5/5) |
+
+### Integration Documentation
+
+- [A+B Integration Report](docs/phase1/ab_integration_report.md)
+- [Live Telemetry Test](tests/test_live_integration.py)
+- [Known-Delay Test](tests/test_known_delay.py)
+
+### Limitations
+
+The detector used a temporary GPS-quality proxy during live telemetry testing. The known-delay test used a synthetic GPS-error input.
+
+These experiments validate the host-side integration and timing method, not actual intrusion-detection accuracy or time-to-violation.
+
+## Current Research Status
+
 **Completed**
-- ArduCopter SITL environment setup.
-- Hover, waypoint survey, and orbit baseline flights.
-- Telemetry recording and flight-path visualization.
+- ArduCopter SITL setup.
+- Mission 1 — Hover.
+- Mission 2 — Waypoint Survey.
+- Mission 3 — Orbit.
+- Baseline telemetry logging and visualization.
 - Student A baseline documentation.
+- Phase I.0 A+B UDP telemetry integration.
+- Host-side detector decision testing.
+- Monotonic clock and known-delay validation.
 
-**Next milestone**
-- Connect Student A's simulation and telemetry workflow to Student B's detection components.
-- Establish a consistent time base.
-- Test the end-to-end detection workflow and validate response timing against the project's defined requirements.
+**Next Milestone — Phase I.1: Attacks and Time-to-Violation**
+- Define safety-envelope thresholds.
+- Implement the ground-truth violation monitor.
+- Develop scheduled attack injectors.
+- Record attack onset and first safety-envelope violation.
+- Calculate time-to-violation (T_v).
 
-**Phase I.0 A+B integration is pending.** Baseline mission success does not, by itself, establish end-to-end detection or mitigation performance.
+**Phase I.0 M1 host-side integration is complete. Phase I.1 is pending.**
