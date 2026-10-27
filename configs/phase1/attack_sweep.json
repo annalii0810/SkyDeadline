@@ -1,0 +1,57 @@
+
+{
+  "schema_version": "1.0",
+  "environment": "ArduCopter SITL",
+  "simulation_only": true,
+  "missions": [
+    "hover",
+    "survey",
+    "orbit"
+  ],
+  "repeats": 5,
+  "timing": {
+    "onset_after_stable_flight_s": 10,
+    "observation_after_onset_s": 45,
+    "clock": "DataFlash TimeUS"
+  },
+  "attacks": {
+    "A1": {
+      "name": "gps_drift",
+      "parameters": {
+        "drift_rate_m_s": [0.5, 1.0, 2.0]
+      }
+    },
+    "A2": {
+      "name": "gps_jump",
+      "parameters": {
+        "jump_distance_m": [5, 10, 20]
+      }
+    },
+    "A3": {
+      "name": "command_injection",
+      "parameters": {
+        "roll_target_deg": [15, 30, 45]
+      }
+    },
+    "A4": {
+      "name": "sensor_false_data",
+      "parameters": {
+        "gyro_bias_deg_s": [2, 5, 10]
+      }
+    },
+    "A5": {
+      "name": "telemetry_dos",
+      "parameters": {
+        "message_rate_hz": [20, 50, 100]
+      }
+    }
+  },
+  "dataset": {
+    "name": "SkyDeadline-Bench",
+    "version": "1.0",
+    "save_raw_logs": true,
+    "save_metadata": true,
+    "save_ground_truth": true,
+    "save_tv_table": true
+  }
+}

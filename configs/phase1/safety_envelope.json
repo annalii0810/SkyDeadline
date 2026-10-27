@@ -1,0 +1,21 @@
+
+{
+  "schema_version": "1.0",
+  "source": "SkyDeadline Data Collection Guide, Table A3",
+  "status": "provisional_pending_benign_validation",
+  "thresholds": {
+    "max_abs_roll_deg": 45.0,
+    "max_abs_pitch_deg": 45.0,
+    "max_altitude_error_m": 5.0,
+    "max_geofence_corridor_error_m": 10.0,
+    "max_trajectory_error_m": 10.0,
+    "ekf_failsafe_is_violation": true
+  },
+  "measurement_policy": {
+    "physical_state_source": "ArduPilot DataFlash SIM/SIM2",
+    "ekf_health_source": "ArduPilot estimator/failsafe events",
+    "time_source": "DataFlash TimeUS",
+    "evaluate_only_when_reference_valid": true,
+    "first_violation_only": true
+  }
+}
